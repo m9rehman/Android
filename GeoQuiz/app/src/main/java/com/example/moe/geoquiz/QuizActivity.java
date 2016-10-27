@@ -24,6 +24,8 @@ public class QuizActivity extends AppCompatActivity {
     };
 
     private static final String TAG = "QuizActivity";
+    //Our key for mCurrentIndex to save into the Bundle
+    private static final String KEY_INDEX = "index";
 
     private int mCurrentIndex = 0;
 
@@ -56,6 +58,10 @@ public class QuizActivity extends AppCompatActivity {
         mNextButton = (Button) findViewById(R.id.next_button);
         mQuestionTextView = (TextView) findViewById(R.id.question_textview);
 
+        if (savedInstanceState!= null){
+            mCurrentIndex = savedInstanceState.getInt(KEY_INDEX,0);
+        }
+
         //Setting the textView by indexing our array of Questions
         updateQuestion();
 
@@ -83,6 +89,13 @@ public class QuizActivity extends AppCompatActivity {
                 updateQuestion();
             }
         });
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState){
+        super.onSaveInstanceState(savedInstanceState);
+        Log.i(TAG, "onSaveInstanceState");
+        savedInstanceState.putInt(KEY_INDEX,mCurrentIndex);
     }
 
     @Override
