@@ -23,7 +23,7 @@ public class QuizActivity extends AppCompatActivity {
             new Question(R.string.question_oceans,true)
     };
 
-    private static final String TAG = "QuizActivity"
+    private static final String TAG = "QuizActivity";
 
     private int mCurrentIndex = 0;
 
