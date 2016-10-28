@@ -56,7 +56,7 @@ public class QuizActivity extends AppCompatActivity {
         mTrueButton = (Button) findViewById(R.id.true_button);
         mFalseButton = (Button) findViewById(R.id.false_button);
         mNextButton = (Button) findViewById(R.id.next_button);
-        mQuestionTextView = (TextView) findViewById(R.id.question_textview);
+//        mQuestionTextView = (TextView) findViewById(R.id.question_textview);
 
         if (savedInstanceState!= null){
             mCurrentIndex = savedInstanceState.getInt(KEY_INDEX,0);
