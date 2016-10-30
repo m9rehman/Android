@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 public class QuizActivity extends AppCompatActivity {
 
     private Button mTrueButton;
@@ -89,7 +90,8 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Creating an intent for Activity Manager and passing it into startActivity
-                Intent i = new Intent(QuizActivity.this, CheatActivity.class);
+                boolean answer = mQuestionTextBank[mCurrentIndex].isAnswerTrue();
+                Intent i = CheatActivity.newIntent(QuizActivity.this,answer);
                 startActivity(i);
             }
         });
