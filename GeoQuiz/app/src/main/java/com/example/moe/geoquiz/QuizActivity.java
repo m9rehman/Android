@@ -30,8 +30,7 @@ public class QuizActivity extends AppCompatActivity {
     private int mCurrentIndex = 0;
 
     private void updateQuestion(){
-        Log.d(TAG, "Updating question text for question #" + mCurrentIndex,
-                new Exception());
+
         int question = mQuestionTextBank[mCurrentIndex].getTextResId();
         mQuestionTextView.setText(question);
     }
@@ -57,7 +56,7 @@ public class QuizActivity extends AppCompatActivity {
         //Getting Reference and Casting
         mTrueButton = (Button) findViewById(R.id.true_button);
         mFalseButton = (Button) findViewById(R.id.false_button);
-        mNextButton = (Button) findViewById(R.id.next_button);
+        mNextButton = (Button) findViewById(R.id.true_button);
         mQuestionTextView = (TextView) findViewById(R.id.question_textview);
 
         if (savedInstanceState!= null){
@@ -87,7 +86,7 @@ public class QuizActivity extends AppCompatActivity {
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
+                mCurrentIndex = (mCurrentIndex + 1) % mQuestionTextBank.length;
                 updateQuestion();
             }
         });
