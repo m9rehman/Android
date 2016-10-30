@@ -59,7 +59,7 @@ public class QuizActivity extends AppCompatActivity {
         //Getting Reference and Casting
         mTrueButton = (Button) findViewById(R.id.true_button);
         mFalseButton = (Button) findViewById(R.id.false_button);
-        mNextButton = (Button) findViewById(R.id.true_button);
+        mNextButton = (Button) findViewById(R.id.next_button);
         mCheatButton = (Button) findViewById(R.id.cheat_button);
         mQuestionTextView = (TextView) findViewById(R.id.question_textview);
 
