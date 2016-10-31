@@ -31,6 +31,7 @@ public class QuizActivity extends AppCompatActivity {
     private static final String KEY_INDEX = "index";
 
     private int mCurrentIndex = 0;
+    private static final int REQUEST_CODE_CHEAT = 0;
 
     private void updateQuestion(){
 
@@ -92,7 +93,7 @@ public class QuizActivity extends AppCompatActivity {
                 //Creating an intent for Activity Manager and passing it into startActivity
                 boolean answer = mQuestionTextBank[mCurrentIndex].isAnswerTrue();
                 Intent i = CheatActivity.newIntent(QuizActivity.this,answer);
-                startActivity(i);
+                startActivityForResult(i,REQUEST_CODE_CHEAT);
             }
         });
 
@@ -113,6 +114,8 @@ public class QuizActivity extends AppCompatActivity {
         Log.i(TAG, "onSaveInstanceState");
         savedInstanceState.putInt(KEY_INDEX,mCurrentIndex);
     }
+
+    @Override
 
     @Override
     public void onStart(){
