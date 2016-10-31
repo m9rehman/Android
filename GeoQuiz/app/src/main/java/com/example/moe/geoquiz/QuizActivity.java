@@ -109,6 +109,7 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mCurrentIndex = (mCurrentIndex + 1) % mQuestionTextBank.length;
+                misCheater = false; //Resetting cheater variable
                 updateQuestion();
             }
         });
