@@ -17,6 +17,7 @@ public class QuizActivity extends AppCompatActivity {
     private Button mNextButton;
     private Button mCheatButton;
     private TextView mQuestionTextView;
+    private Boolean misCheater;
     //Creating an array of Question Objects
     private Question[] mQuestionTextBank = new Question[] {
             new Question(R.string.question_africa,false),
@@ -43,10 +44,15 @@ public class QuizActivity extends AppCompatActivity {
         boolean answerIsTrue = mQuestionTextBank[mCurrentIndex].isAnswerTrue();
 
         int messageResId = 0;
-        if(answerIsTrue == userPressedTrue){
-            messageResId = R.string.correct_toast;
+
+        if(misCheater){
+            messageResId = R.string.judgment_toast;
         } else {
-            messageResId = R.string.incorrect_toast;
+            if (answerIsTrue == userPressedTrue) {
+                messageResId = R.string.correct_toast;
+            } else {
+                messageResId = R.string.incorrect_toast;
+            }
         }
         Toast.makeText(this,messageResId,Toast.LENGTH_SHORT).show();
     }
@@ -116,6 +122,20 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        //Checking resultcode
+        if(resultCode != RESULT_OK){
+            return;
+        }
+        //Checking our request codes
+        if (requestCode == REQUEST_CODE_CHEAT){
+            if(data == null){
+                return;
+            }
+
+            misCheater = CheatActivity.wasAnswerShown(data);
+        }
+    }
 
     @Override
     public void onStart(){
